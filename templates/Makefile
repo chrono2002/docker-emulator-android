@@ -32,8 +32,8 @@ lint:
 tag:
 	docker tag $(LATEST_TAG) $(BUILD_TAG)
 	docker tag $(LATEST_TAG) $(GIT_TAG)
-	docker tag $(SNAPSHOT_LATEST_TAG) $(SNAPSHOT_BUILD_TAG)
-	docker tag $(SNAPSHOT_LATEST_TAG) $(SNAPSHOT_GIT_TAG)
+#	docker tag $(SNAPSHOT_LATEST_TAG) $(SNAPSHOT_BUILD_TAG)
+#	docker tag $(SNAPSHOT_LATEST_TAG) $(SNAPSHOT_GIT_TAG)
 
 push:
 	docker push $(GIT_TAG)
