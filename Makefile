@@ -1,18 +1,20 @@
 SHELL := /usr/bin/env bash
-VERSIONS ?= android-17 android-18 android-19 android-21 android-22 android-23 android-24 android-25 android-26 android-27 android-28
+VERSIONS_OLD ?= android-17 android-18 android-19 android-21 android-22 android-23 android-24 android-25 android-26 android-27
+VERSIONS_NEW ?= android-28
+VERSIONS ?= $(VERSIONS_OLD) $(VERSIONS_NEW)
 
 generate:
-#	for version in $(VERSIONS); do \
-#		mkdir -p ./build/$$version ; \
-#		sed "s/{{ platform }}/$$version/g" templates/Dockerfile > build/$$version/Dockerfile ; \
-#		sed "s/{{ platform }}/$$version/g" templates/config.ini > build/$$version/config.ini ; \
-#		sed "s/{{ platform }}/$$version/g" templates/start.sh > build/$$version/start.sh ; \
-#		sed "s/{{ platform }}/$$version/g" templates/Makefile > build/$$version/Makefile ; \
-#		sed "s/{{ platform }}/$$version/g" templates/snapshot.sh > build/$$version/snapshot.sh ; \
-#		sed "s/{{ platform }}/$$version/g" templates/snapshot.expect > build/$$version/snapshot.expect ; \
-#		sed "s/{{ platform }}/$$version/g" templates/take_snapshot.sh > build/$$version/take_snapshot.sh ; \
-#		cp base/* ./build/$$version ; \
-#	done
+	for version in $(VERSIONS_OLD); do \
+		mkdir -p ./build/$$version ; \
+		sed "s/{{ platform }}/$$version/g" templates/Dockerfile > build/$$version/Dockerfile ; \
+		sed "s/{{ platform }}/$$version/g" templates/config.ini > build/$$version/config.ini ; \
+		sed "s/{{ platform }}/$$version/g" templates/start.sh > build/$$version/start.sh ; \
+		sed "s/{{ platform }}/$$version/g" templates/Makefile > build/$$version/Makefile ; \
+		sed "s/{{ platform }}/$$version/g" templates/snapshot.sh > build/$$version/snapshot.sh ; \
+		sed "s/{{ platform }}/$$version/g" templates/snapshot.expect > build/$$version/snapshot.expect ; \
+		sed "s/{{ platform }}/$$version/g" templates/take_snapshot.sh > build/$$version/take_snapshot.sh ; \
+		cp base/* ./build/$$version ; \
+	done
 
 clean:
 	rm -rf ./build
