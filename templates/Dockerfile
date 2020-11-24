@@ -31,6 +31,7 @@ RUN dpkg --add-architecture i386 && \
     rm /tmp/android-sdk-linux.zip && \
     # Customized steps per specific platform
     yes | sdkmanager --no_https --licenses && \
+    ln -s /proc/self/mounts /etc/mtab && \
     apt-get -yq autoremove && \
     apt-get clean && \
     apt-get autoclean && \
